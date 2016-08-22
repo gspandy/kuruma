@@ -16,7 +16,7 @@ open class ApplicationBoot {
 
     @PostConstruct
     open fun init() {
-        LOGGER.debug("${ApplicationBoot::class.java.simpleName} init ...")
+        LOGGER.debug("'${ApplicationBoot::class.java.simpleName}'初始化")
     }
 
 }
