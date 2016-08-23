@@ -5,9 +5,4 @@
 
 <configuration>
 
-    <typeAliases>
-        <package name="sample.mybatis.domain"/>
-    </typeAliases>
-
-    <mappers/>
 </configuration>
