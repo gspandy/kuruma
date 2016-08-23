@@ -1,4 +1,4 @@
-package com.github.yingzhuo.kuruma.confserver.bean
+package com.github.yingzhuo.kuruma.user.bean
 
 import org.apache.commons.lang3.time.DateFormatUtils
 import org.slf4j.LoggerFactory
