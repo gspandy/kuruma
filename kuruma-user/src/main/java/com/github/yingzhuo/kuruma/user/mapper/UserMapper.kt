@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Select
 @Mapper
 interface UserMapper {
 
-    @Select("SELECT * FROM T_USER WHERE id = #{id}")
+    @Select("SELECT * FROM T_USER WHERE ID = #{id}")
     fun findById(@Param("id") id: String): User?
 
 }

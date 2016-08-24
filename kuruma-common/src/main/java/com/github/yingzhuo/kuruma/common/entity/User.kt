@@ -1,9 +1,10 @@
 package com.github.yingzhuo.kuruma.common.entity
 
+import com.github.yingzhuo.kuruma.common.AbstractToStringSupport
 import com.github.yingzhuo.kuruma.common.Gender
 import com.github.yingzhuo.kuruma.common.Idable
 
-open class User : Idable<String> {
+open class User : AbstractToStringSupport(), Idable<String> {
 
     /**
      * ID
@@ -24,6 +25,5 @@ open class User : Idable<String> {
      * 登录密码
      */
     var password: String? = null
-
 
 }

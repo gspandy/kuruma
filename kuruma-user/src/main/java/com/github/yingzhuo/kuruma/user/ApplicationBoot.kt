@@ -33,6 +33,9 @@ open class ApplicationBoot @Autowired constructor(val env: Environment) : Applic
 
 }
 
+/**
+ * 程序入口
+ */
 fun main(args: Array<String>) {
     SpringApplication.run(ApplicationBoot::class.java, *args)
 }
