@@ -1,6 +1,7 @@
 package com.github.yingzhuo.kuruma.user.dao.impl
 
 import com.github.yingzhuo.kuruma.common.entity.User
+import com.github.yingzhuo.kuruma.common.uuid
 import com.github.yingzhuo.kuruma.user.dao.UserDao
 import com.github.yingzhuo.kuruma.user.mapper.UserMapper
 import org.slf4j.LoggerFactory
@@ -17,6 +18,17 @@ open class UserDaoImpl @Autowired constructor(val userMapper: UserMapper) : User
     override fun findUserById(id: String): User? {
         LOGGER.trace("userId: {}", id)
         return userMapper.findById(id)
+    }
+
+    override fun saveUser(user: User): User {
+
+        if (user.id == null) {
+            user.id = uuid()
+        }
+
+        userMapper.save(user)
+
+        return user
     }
 
 }

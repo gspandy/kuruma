@@ -3,6 +3,7 @@ package com.github.yingzhuo.kuruma.common.entity
 import com.github.yingzhuo.kuruma.common.AbstractToStringSupport
 import com.github.yingzhuo.kuruma.common.Gender
 import com.github.yingzhuo.kuruma.common.Idable
+import java.util.*
 
 open class User : AbstractToStringSupport(), Idable<String> {
 
@@ -25,5 +26,10 @@ open class User : AbstractToStringSupport(), Idable<String> {
      * 登录密码
      */
     var password: String? = null
+
+    /**
+     * 注册时间
+     */
+    var regiesterDate: Date? = null
 
 }

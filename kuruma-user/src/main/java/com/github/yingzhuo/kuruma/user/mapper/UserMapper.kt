@@ -1,14 +1,21 @@
 package com.github.yingzhuo.kuruma.user.mapper
 
 import com.github.yingzhuo.kuruma.common.entity.User
-import org.apache.ibatis.annotations.Mapper
-import org.apache.ibatis.annotations.Param
-import org.apache.ibatis.annotations.Select
+import org.apache.ibatis.annotations.*
 
 @Mapper
 interface UserMapper {
 
+    @ResultMap("user.base")
     @Select("SELECT * FROM T_USER WHERE ID = #{id}")
     fun findById(@Param("id") id: String): User?
 
+
+    @Insert("""
+    INSERT INTO T_USER
+        (ID, NAME, GENDER, PASSWORD, REGIESTER_DATE)
+    VALUES
+        (#{id}, #{name}, #{gender}, #{password}, #{regiesterDate} )
+    """)
+    fun save(user: User): Unit
 }

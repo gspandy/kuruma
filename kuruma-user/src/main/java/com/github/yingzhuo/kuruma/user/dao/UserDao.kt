@@ -6,4 +6,6 @@ interface UserDao {
 
     fun findUserById(id: String): User?
 
+    fun saveUser(user: User): User
+
 }

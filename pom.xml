@@ -350,6 +350,27 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <excludes>
+                    <exclude>**/.gitkeep</exclude>
+                    <exclude>**/*.java</exclude>
+                    <exclude>**/*.scala</exclude>
+                    <exclude>**/*.groovy</exclude>
+                    <exclude>**/*.kt</exclude>
+                    <exclude>**/*.xsd</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>**/.gitkeep</exclude>
+                    <exclude>**/*.xsd</exclude>
+                </excludes>
+            </resource>
+        </resources>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
