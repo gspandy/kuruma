@@ -36,4 +36,8 @@ open class UserRequest : Serializable {
         id = uuid()
     }
 
+    override fun toString(): String{
+        return "UserRequest(id=$id, name=$name, gender=$gender, password=$password, regiesterDate=$regiesterDate)"
+    }
+
 }

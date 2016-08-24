@@ -12,6 +12,7 @@
     <artifactId>kuruma-config-server</artifactId>
 
     <dependencies>
+        <!-- spring-cloud -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
