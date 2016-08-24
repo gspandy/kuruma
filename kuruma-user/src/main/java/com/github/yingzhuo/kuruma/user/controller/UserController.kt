@@ -23,7 +23,7 @@ open class UserController @Autowired constructor(val userService: UserService) {
         LOGGER.debug("userId: {}", userId)
 
         val user = userService.findUserById(userId)
-        return Json()
+        return Json.create()
                 .put("user" to user)
                 .asResponseEntity()
     }

@@ -15,3 +15,7 @@ open class BusinessException constructor(
  */
 open class ResourceNotFoundException(message: String? = null) : BusinessException(message)
 
+/**
+ * 错误的请求异常
+ */
+open class BadRequestException(message: String? = null): BusinessException(message)

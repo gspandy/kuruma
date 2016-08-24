@@ -12,7 +12,7 @@ class Json private constructor(val code: Int, messages: Array<String>): Serializ
     val payload: Map<String, Any> get() = _payload
 
     companion object {
-        operator fun invoke(status: HttpStatus = HttpStatus.OK, messages: Array<String> = arrayOf()): Json {
+        fun create(status: HttpStatus = HttpStatus.OK, messages: Array<String> = arrayOf()): Json {
             return Json(status.value(), messages)
         }
     }
