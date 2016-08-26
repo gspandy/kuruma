@@ -36,18 +36,13 @@ open class UserRequest : Serializable {
     @Length(min = 6, max = 12, groups = arrayOf(Update::class, Create::class), message = "密码长度必须在{min}与{max}之间")
     var password: String? = null
 
-    /**
-     * 注册时间
-     */
-    @NotNull(groups = arrayOf(Create::class), message = "注册日期不可为空")
-    var regiesterDate: Date? = null
 
     init {
         id = uuid()
     }
 
     override fun toString(): String{
-        return "UserRequest(id=$id, name=$name, gender=$gender, password=$password, regiesterDate=$regiesterDate)"
+        return "UserRequest(id=$id, name=$name, gender=$gender, password=$password"
     }
 
 }

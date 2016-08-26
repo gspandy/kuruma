@@ -21,13 +21,7 @@ open class UserDaoImpl @Autowired constructor(val userMapper: UserMapper) : User
     }
 
     override fun saveUser(user: User): User {
-
-        if (user.id == null) {
-            user.id = uuid()
-        }
-
         userMapper.save(user)
-
         return user
     }
 
