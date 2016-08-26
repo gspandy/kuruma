@@ -1,10 +1,12 @@
 package com.github.yingzhuo.kuruma.common.entity
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.github.yingzhuo.kuruma.common.AbstractToStringSupport
 import com.github.yingzhuo.kuruma.common.Gender
 import com.github.yingzhuo.kuruma.common.Idable
 import java.util.*
 
+@JsonIgnoreProperties("password")
 open class User : AbstractToStringSupport(), Idable<String> {
 
     /**

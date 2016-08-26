@@ -32,16 +32,21 @@ open class ExceptionHandlers {
 
     @ExceptionHandler(BadRequestException::class)
     open fun handleBadRequestException(ex: BadRequestException): ResponseEntity<Json> {
-
-        val messages =
-                if (ex.message != null)
-                    arrayOf(ex.message!!)
-                else
-                    arrayOf()
-
+        val messages = resolveMessages(ex)
         LOGGER.debug("messages: {}", messages)
-
         return Json.create(HttpStatus.BAD_REQUEST, messages).asResponseEntity()
     }
 
+    private fun resolveMessages(ex: BadRequestException): Array<String> {
+
+        if (ex.message != null && !ex.message.isNullOrBlank()) {
+            return arrayOf(ex.message!!)
+        }
+
+        if (ex.errors.isNotEmpty()) {
+            return ex.errors.map { it.defaultMessage } .toList().toTypedArray()
+        }
+
+        return arrayOf()
+    }
 }
