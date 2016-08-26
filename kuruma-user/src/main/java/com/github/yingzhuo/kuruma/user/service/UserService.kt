@@ -1,5 +1,6 @@
 package com.github.yingzhuo.kuruma.user.service
 
+import com.github.yingzhuo.kuruma.common.entity.AccessToken
 import com.github.yingzhuo.kuruma.common.entity.User
 import com.github.yingzhuo.kuruma.user.controller.request.UserRequest
 import org.springframework.transaction.annotation.Propagation
@@ -12,5 +13,8 @@ interface UserService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     fun regiesterUser(request: UserRequest): User
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    fun generateAccessToken(name: String, password: String): AccessToken
 
 }
