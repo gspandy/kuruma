@@ -9,18 +9,30 @@ import com.github.yingzhuo.kuruma.user.dao.UserDao
 import com.github.yingzhuo.kuruma.user.password.PasswordHasher
 import com.github.yingzhuo.kuruma.user.service.UserService
 import org.apache.commons.beanutils.PropertyUtils
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Value
+import org.springframework.cloud.context.config.annotation.RefreshScope
 import org.springframework.stereotype.Service
 import java.util.*
-import java.util.concurrent.TimeUnit
+import javax.annotation.PostConstruct
 
 @Service
+@RefreshScope
 open class UserServiceImpl @Autowired constructor(
         val userDao: UserDao,
         val passwordHasher: PasswordHasher) : UserService {
 
+    @Value("\${tokenTTL:7200}")
+    var tokenTTL: Long = -1
+
     companion object {
-        private val EXP = TimeUnit.HOURS.toMillis(4)
+        private val LOGGER = LoggerFactory.getLogger(UserServiceImpl::class.java)
+    }
+
+    @PostConstruct
+    fun init() {
+        LOGGER.debug("tokenTTL: {}", tokenTTL)
     }
 
     override fun findUserById(userId: String): User {
@@ -40,10 +52,10 @@ open class UserServiceImpl @Autowired constructor(
     override fun generateAccessToken(name: String, password: String): AccessToken {
         val hashedPassword = passwordHasher.hash(password)
 
-        val userId: String = userDao.testPassword(name, password) ?: throw ResourceNotFoundException()
+        val userId: String = userDao.testPassword(name, hashedPassword) ?: throw ResourceNotFoundException()
 
         var accessToken: AccessToken? = userDao.findAccessTokenByUserId(userId)
-        val exp = Date().time + EXP
+        val exp = Date().time + tokenTTL
 
         if (accessToken == null) {
             accessToken = AccessToken(userId, uuid(), exp)
