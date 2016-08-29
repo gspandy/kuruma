@@ -25,4 +25,5 @@ class SpringUtils : EnvironmentAware, ApplicationContextAware {
         if (SpringUtils.applicationContext == null)
             SpringUtils.applicationContext = applicationContext
     }
+
 }

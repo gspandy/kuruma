@@ -13,6 +13,11 @@ open class BusinessException constructor(
 }
 
 /**
+ * 权限错误
+ */
+open class ForbiddenException(message: String? = null) : BusinessException(message)
+
+/**
  * 资源没有找到异常
  */
 open class ResourceNotFoundException(message: String? = null) : BusinessException(message)
@@ -20,7 +25,7 @@ open class ResourceNotFoundException(message: String? = null) : BusinessExceptio
 /**
  * 错误的请求异常
  */
-open class BadRequestException constructor(message: String? = null): BusinessException(message) {
+open class BadRequestException constructor(message: String? = null) : BusinessException(message) {
 
     var errors: List<ObjectError> = listOf()
 

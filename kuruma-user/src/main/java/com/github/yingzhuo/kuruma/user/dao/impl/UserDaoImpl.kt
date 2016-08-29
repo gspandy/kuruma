@@ -1,5 +1,6 @@
 package com.github.yingzhuo.kuruma.user.dao.impl
 
+import com.github.yingzhuo.kuruma.common.Gender
 import com.github.yingzhuo.kuruma.common.entity.AccessToken
 import com.github.yingzhuo.kuruma.common.entity.User
 import com.github.yingzhuo.kuruma.user.dao.UserDao
@@ -29,6 +30,14 @@ open class UserDaoImpl @Autowired constructor(
         return user
     }
 
+    override fun updateGender(userId: String, gender: Gender) {
+        userMapper.updateGender(userId, gender)
+    }
+
+    override fun updatePassword(userId: String, password: String) {
+        userMapper.updatePassword(userId, password)
+    }
+
     override fun testPassword(name: String, password: String): String? {
 
         if (name.isNullOrBlank() || password.isNullOrBlank()) {
@@ -38,12 +47,21 @@ open class UserDaoImpl @Autowired constructor(
         return userMapper.testPassword(name, password)
     }
 
+    override fun testPasswordByUserId(userId: String, password: String): Boolean {
+
+        if (password.isNullOrBlank()) {
+            return false
+        }
+
+        return userMapper.testPasswordById(userId, password)
+    }
+
     override fun findAccessTokenByUserId(userId: String): AccessToken? {
         return accessTokenMapper.findByUserId(userId)
     }
 
-    override fun updateAccessToken(userId: String, expiredTime: Long) {
-        accessTokenMapper.updateExpiredTime(userId, expiredTime)
+    override fun updateAccessToken(userId: String, token: String, expiredTime: Long) {
+        accessTokenMapper.updateExpiredTimeAndToken(userId, expiredTime, token)
     }
 
     override fun saveAccessToken(accessToken: AccessToken) {

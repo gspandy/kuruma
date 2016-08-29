@@ -7,9 +7,10 @@ interface PasswordHasher {
 
     companion object {
         val DEFAULT = object : PasswordHasher {
-            override fun hash(rawPassword: String): String = DigestUtils.md5Hex(rawPassword)
+            override fun hash(rawPassword: String): String = DigestUtils.md5Hex(rawPassword).toLowerCase()
         }
     }
 
     fun hash(rawPassword: String): String
+
 }

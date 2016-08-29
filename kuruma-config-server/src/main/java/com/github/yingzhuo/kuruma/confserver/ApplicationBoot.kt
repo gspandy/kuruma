@@ -34,6 +34,7 @@ open class ApplicationBoot constructor(val env: Environment) : ApplicationRunner
         args.optionNames.forEach { LOGGER.info("\t\t{} = {}", it, args.getOptionValues(it)) }
         LOGGER.info("-".repeat(80))
     }
+
 }
 
 /**

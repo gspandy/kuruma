@@ -2,6 +2,7 @@ package com.github.yingzhuo.kuruma.user.controller
 
 import com.github.yingzhuo.kuruma.common.Json
 import com.github.yingzhuo.kuruma.common.exception.BadRequestException
+import com.github.yingzhuo.kuruma.common.exception.ForbiddenException
 import com.github.yingzhuo.kuruma.common.exception.ResourceNotFoundException
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
@@ -14,6 +15,20 @@ open class ExceptionHandlers {
 
     companion object {
         private val LOGGER = LoggerFactory.getLogger(ExceptionHandlers::class.java)
+    }
+
+    @ExceptionHandler(ForbiddenException::class)
+    open fun handleForbiddenException(ex: ForbiddenException): ResponseEntity<Json> {
+
+        val messages =
+                if (ex.message != null)
+                    arrayOf(ex.message!!)
+                else
+                    arrayOf()
+
+        LOGGER.debug("messages: {}", messages)
+
+        return Json.create(HttpStatus.FORBIDDEN, messages).asResponseEntity()
     }
 
     @ExceptionHandler(ResourceNotFoundException::class)

@@ -1,5 +1,6 @@
 package com.github.yingzhuo.kuruma.user.controller
 
+import com.github.yingzhuo.kuruma.common.Gender
 import com.github.yingzhuo.kuruma.common.Json
 import com.github.yingzhuo.kuruma.common.exception.BadRequestException
 import com.github.yingzhuo.kuruma.common.validate.Create
@@ -42,6 +43,27 @@ open class UserController @Autowired constructor(val userService: UserService) {
         val user = userService.regiesterUser(request)
         return Json.create(HttpStatus.CREATED)
                 .put("user" to user)
+                .asResponseEntity()
+    }
+
+    @PutMapping("{userId}/gender/{gender}")
+    open fun updateGender(@PathVariable("userId") userId: String, @PathVariable("gender") gender: Gender): ResponseEntity<Json> {
+        userService.updateUserGender(userId, gender)
+        return Json.create(HttpStatus.CREATED)
+                .asResponseEntity()
+    }
+
+    @PutMapping("{userId}/password/{newPassword}")
+    open fun updatePassword(
+            @PathVariable("userId") userId: String,
+            @PathVariable("newPassword") newPassword: String,
+            @MatrixVariable(name = "o", pathVar = "newPassword", required = true) oldPassword: String): ResponseEntity<Json> {
+
+        LOGGER.debug("old pwd: {}", oldPassword)
+        LOGGER.debug("new pwd: {}", newPassword)
+
+        userService.updateUserPassword(userId, newPassword, oldPassword)
+        return Json.create(HttpStatus.CREATED)
                 .asResponseEntity()
     }
 

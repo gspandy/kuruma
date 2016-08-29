@@ -1,7 +1,9 @@
 package com.github.yingzhuo.kuruma.user.service.impl
 
+import com.github.yingzhuo.kuruma.common.Gender
 import com.github.yingzhuo.kuruma.common.entity.AccessToken
 import com.github.yingzhuo.kuruma.common.entity.User
+import com.github.yingzhuo.kuruma.common.exception.ForbiddenException
 import com.github.yingzhuo.kuruma.common.exception.ResourceNotFoundException
 import com.github.yingzhuo.kuruma.common.uuid
 import com.github.yingzhuo.kuruma.user.controller.request.UserRequest
@@ -57,14 +59,32 @@ open class UserServiceImpl @Autowired constructor(
         var accessToken: AccessToken? = userDao.findAccessTokenByUserId(userId)
         val exp = Date().time + tokenTTL
 
+        val newToken = uuid()
         if (accessToken == null) {
-            accessToken = AccessToken(userId, uuid(), exp)
+            accessToken = AccessToken(userId, newToken, exp)
             userDao.saveAccessToken(accessToken)
         } else {
-            userDao.updateAccessToken(userId, exp)
+            userDao.updateAccessToken(userId, newToken, exp)
         }
 
         accessToken.expiredTime = exp
+        accessToken.token = newToken
         return accessToken
     }
+
+    override fun updateUserGender(userId: String, gender: Gender) {
+        userDao.updateGender(userId, gender)
+    }
+
+    override fun updateUserPassword(userId: String, newPassword: String, oldPassword: String) {
+        if (! userDao.testPasswordByUserId(userId, passwordHasher.hash(oldPassword))) {
+            LOGGER.debug("旧密码错误")
+            throw ForbiddenException()
+        }
+
+        LOGGER.debug("旧密码正确")
+        val hashedPassword = passwordHasher.hash(newPassword)
+        userDao.updatePassword(userId, hashedPassword)
+    }
+
 }

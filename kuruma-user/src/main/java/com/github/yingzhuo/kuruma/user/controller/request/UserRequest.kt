@@ -6,7 +6,6 @@ import com.github.yingzhuo.kuruma.common.validate.Create
 import com.github.yingzhuo.kuruma.common.validate.Update
 import org.hibernate.validator.constraints.Length
 import java.io.Serializable
-import java.util.*
 import javax.validation.constraints.NotNull
 
 open class UserRequest : Serializable {
@@ -42,7 +41,7 @@ open class UserRequest : Serializable {
     }
 
     override fun toString(): String{
-        return "UserRequest(id=$id, name=$name, gender=$gender, password=$password"
+        return "UserRequest(id=$id, name=$name, gender=$gender, newPassword=$password"
     }
 
 }
