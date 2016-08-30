@@ -4,6 +4,11 @@ import org.springframework.context.ApplicationContext
 import org.springframework.context.ApplicationContextAware
 import org.springframework.context.EnvironmentAware
 import org.springframework.core.env.Environment
+import org.springframework.web.context.request.RequestContextHolder
+import org.springframework.web.context.request.ServletRequestAttributes
+import javax.servlet.http.HttpServletRequest
+import javax.servlet.http.HttpServletResponse
+import javax.servlet.http.HttpSession
 
 class SpringUtils : EnvironmentAware, ApplicationContextAware {
 
@@ -13,7 +18,23 @@ class SpringUtils : EnvironmentAware, ApplicationContextAware {
 
         fun getContainer(): ApplicationContext = applicationContext!!
 
+        fun getEnv(): Environment = environment!!
+
         fun getActiveProfiles(): Set<String> = setOf<String>(*(environment!!.activeProfiles))
+
+        fun getRequest(): HttpServletRequest {
+            val attribute = RequestContextHolder.currentRequestAttributes() as ServletRequestAttributes
+            return attribute.request
+        }
+
+        fun getResponse(): HttpServletResponse {
+            val attribute = RequestContextHolder.currentRequestAttributes() as ServletRequestAttributes
+            return attribute.response
+        }
+
+        fun getSession(create: Boolean = true): HttpSession {
+            return getRequest().getSession(create)
+        }
     }
 
     override fun setEnvironment(environment: Environment) {

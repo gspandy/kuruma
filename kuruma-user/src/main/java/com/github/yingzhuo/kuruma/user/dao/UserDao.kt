@@ -20,6 +20,8 @@ interface UserDao {
 
     fun findAccessTokenByUserId(userId: String): AccessToken?
 
+    fun findAccessTokenByToken(token: String): AccessToken?
+
     fun updateAccessToken(userId: String, token: String, expiredTime: Long): Unit
 
     fun saveAccessToken(accessToken: AccessToken): Unit

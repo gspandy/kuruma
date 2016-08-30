@@ -60,6 +60,10 @@ open class UserDaoImpl @Autowired constructor(
         return accessTokenMapper.findByUserId(userId)
     }
 
+    override fun findAccessTokenByToken(token: String): AccessToken? {
+        return accessTokenMapper.findByToken(token)
+    }
+
     override fun updateAccessToken(userId: String, token: String, expiredTime: Long) {
         accessTokenMapper.updateExpiredTimeAndToken(userId, expiredTime, token)
     }
