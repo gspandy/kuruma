@@ -6,6 +6,10 @@ import com.github.yingzhuo.kuruma.common.entity.User
 
 interface UserDao {
 
+    fun existsUserById(id: String): Boolean
+
+    fun notExistsUserById(id: String): Boolean
+
     fun findUserById(id: String): User?
 
     fun saveUser(user: User): User

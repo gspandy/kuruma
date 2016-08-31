@@ -6,7 +6,7 @@
         <id property="id" column="ID"/>
         <result property="name" column="NAME"/>
         <result property="gender" column="GENDER"/>
-        <result property="newPassword" column="PASSWORD"/>
+        <result property="password" column="PASSWORD"/>
         <result property="regiesterDate" column="REGISTER_DATE"/>
     </resultMap>
 

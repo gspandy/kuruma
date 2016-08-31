@@ -7,6 +7,9 @@ import org.apache.ibatis.annotations.*
 @Mapper
 interface UserMapper {
 
+    @Select("SELECT COUNT(*) <> 0 FROM T_USER WHERE ID = #{id}")
+    fun existsById(@Param("id") id: String): Boolean
+
     @ResultMap("user.base")
     @Select("SELECT * FROM T_USER WHERE ID = #{id}")
     fun findById(@Param("id") id: String): User?

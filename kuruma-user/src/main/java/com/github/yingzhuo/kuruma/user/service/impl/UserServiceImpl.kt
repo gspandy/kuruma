@@ -73,10 +73,17 @@ open class UserServiceImpl @Autowired constructor(
     }
 
     override fun updateUserGender(userId: String, gender: Gender) {
+        if (userDao.notExistsUserById(userId)) {
+            throw ResourceNotFoundException()
+        }
         userDao.updateGender(userId, gender)
     }
 
     override fun updateUserPassword(userId: String, newPassword: String, oldPassword: String) {
+        if (userDao.notExistsUserById(userId)) {
+            throw ResourceNotFoundException()
+        }
+
         if (! userDao.testPasswordByUserId(userId, passwordHasher.hash(oldPassword))) {
             LOGGER.debug("旧密码错误")
             throw ForbiddenException()

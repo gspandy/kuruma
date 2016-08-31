@@ -20,6 +20,12 @@ open class UserDaoImpl @Autowired constructor(
         private val LOGGER = LoggerFactory.getLogger(UserDaoImpl::class.java)
     }
 
+    override fun existsUserById(id: String): Boolean {
+        return userMapper.existsById(id)
+    }
+
+    override fun notExistsUserById(id: String): Boolean = !existsUserById(id)
+
     override fun findUserById(id: String): User? {
         LOGGER.trace("userId: {}", id)
         return userMapper.findById(id)
