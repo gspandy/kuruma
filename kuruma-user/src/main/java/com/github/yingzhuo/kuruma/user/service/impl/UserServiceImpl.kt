@@ -14,6 +14,7 @@ import org.apache.commons.beanutils.PropertyUtils
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.cache.annotation.Cacheable
 import org.springframework.cloud.context.config.annotation.RefreshScope
 import org.springframework.stereotype.Service
 import java.util.*
@@ -37,6 +38,7 @@ open class UserServiceImpl @Autowired constructor(
         LOGGER.debug("tokenTTL: {}", tokenTTL)
     }
 
+    @Cacheable("userCache", keyGenerator = "keyGen")
     override fun findUserById(userId: String): User {
         return userDao.findUserById(userId) ?: throw ResourceNotFoundException()
     }

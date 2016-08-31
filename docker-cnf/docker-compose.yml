@@ -23,6 +23,16 @@ mysql:
     - MYSQL_USER=yingzhuo
     - MYSQL_PASSWORD=yingzhuo
 
+redis:
+  image: redis:3.2.0
+  ports:
+    - 16379:6379
+  volumes:
+    - /tmp:/tmp
+    - /home/yingzhuo/projects/kuruma/volume/redis/data:/data
+    - /home/yingzhuo/projects/kuruma/config/redis/redis-docker.conf:/usr/local/etc/redis/redis.conf
+  command: bash -c "redis-server /usr/local/etc/redis/redis.conf"
+
 config_server:
   image: yingzhuo/kuruma-config-server:latest
   ports:
@@ -43,7 +53,9 @@ user:
     - SPRING_PROFILES_ACTIVE=cloud
   links:
       - mysql:mysql
+      - redis:redis
       - config_server:configserver
   entrypoint: dockerize -wait tcp://mysql:3306 -timeout 60s
+  entrypoint: dockerize -wait tcp://redis:6379 -timeout 60s
   entrypoint: dockerize -wait tcp://configserver:8888 -timeout 60s
   command: bash -c "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
