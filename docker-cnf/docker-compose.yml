@@ -1,14 +1,14 @@
 #######################################################################################################################
 # 功能: 启动容器
-#     1) db:                  数据库服务
+#     1) mysql:               数据库服务
 #     2) redis:               缓存服务
 #     3) config-server:       配置中心
 #     4) user:                用户服务
 # 作者: 应卓
-# 日期: 2016-07-17
+# 日期: 2016-08-31
 #######################################################################################################################
 
-db:
+mysql:
   image: mysql:5.5.49
   ports:
     - 13306:3306
@@ -42,7 +42,7 @@ user:
   environment:
     - SPRING_PROFILES_ACTIVE=cloud
   links:
-      - db:mysql
+      - mysql:mysql
       - config_server:configserver
   entrypoint: dockerize -wait tcp://mysql:3306 -timeout 60s
   entrypoint: dockerize -wait tcp://configserver:8888 -timeout 60s

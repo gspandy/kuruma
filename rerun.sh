@@ -13,10 +13,7 @@ docker rmi yingzhuo/kuruma-user:latest 2> /dev/null
 docker rmi yingzhuo/kuruma-config-server:latest 2> /dev/null
 
 # 下载源文件
-if [-d /tmp/kuruma]; then
-    rm -rf /tmp/kuruma
-fi
-
+rm -rf /tmp/kuruma 2> /dev/null
 git clone https://github.com/yingzhuo/kuruma.git "/tmp/kuruma"
 
 # 构建Jar文件
