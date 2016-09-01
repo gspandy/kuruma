@@ -30,7 +30,7 @@ redis:
   volumes:
     - /tmp:/tmp
     - /home/yingzhuo/projects/kuruma/volume/redis/data:/data
-    - /home/yingzhuo/projects/kuruma/config/redis/redis-docker.conf:/usr/local/etc/redis/redis.conf
+    - /home/yingzhuo/projects/kuruma/config/redis/redis-docker.cnf:/usr/local/etc/redis/redis.conf
   command: bash -c "redis-server /usr/local/etc/redis/redis.conf"
 
 config_server:
