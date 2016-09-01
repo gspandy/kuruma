@@ -39,6 +39,7 @@ config_server:
     - 8888:8888
   volumes:
     - /tmp:/tmp
+    - /home/yingzhuo/projects/kuruma/logs/config-server/:/log/
   environment:
     - SPRING_PROFILES_ACTIVE=cloud
   command: bash -c "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
@@ -49,6 +50,7 @@ user:
     - 7777:7777
   volumes:
     - /tmp:/tmp
+    - /home/yingzhuo/projects/kuruma/logs/user/:/log/
   environment:
     - SPRING_PROFILES_ACTIVE=cloud
   links:
