@@ -24,7 +24,7 @@ mysql:
     - MYSQL_PASSWORD=yingzhuo
 
 redis:
-  image: redis:3.2.2
+  image: redis:3.2.3
   ports:
     - 16379:6379
   volumes:
