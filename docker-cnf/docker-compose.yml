@@ -65,7 +65,7 @@ user:
 car:
   image: yingzhuo/kuruma-car:latest
   ports:
-    - 7777:7777
+    - 7778:7778
   volumes:
     - /tmp:/tmp
     - /home/yingzhuo/projects/kuruma/logs/car/:/log/
