@@ -8,9 +8,10 @@
     <artifactId>kuruma</artifactId>
     <version>1.0.0</version>
     <modules>
+        <module>kuruma-car</module>
+        <module>kuruma-common</module>
         <module>kuruma-config-server</module>
         <module>kuruma-user</module>
-        <module>kuruma-common</module>
     </modules>
     <packaging>pom</packaging>
 

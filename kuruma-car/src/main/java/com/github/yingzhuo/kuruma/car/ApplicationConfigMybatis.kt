@@ -1,4 +1,4 @@
-package com.github.yingzhuo.kuruma.user
+package com.github.yingzhuo.kuruma.car
 
 import org.apache.ibatis.annotations.Mapper
 import org.mybatis.spring.annotation.MapperScan
@@ -11,16 +11,14 @@ import javax.sql.DataSource
 
 @Configuration
 @MapperScan(
-        basePackages = arrayOf("com.github.yingzhuo.kuruma.user.mapper"),
+        basePackages = arrayOf("com.github.yingzhuo.kuruma.car.mapper"),
         annotationClass = Mapper::class
 )
 @EnableTransactionManagement
 open class ApplicationConfigMybatis {
 
-
     @Bean
     open fun txManager(dataSource: DataSource): PlatformTransactionManager {
         return DataSourceTransactionManager(dataSource)
     }
-
 }
