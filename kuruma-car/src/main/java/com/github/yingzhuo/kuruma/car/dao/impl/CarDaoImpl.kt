@@ -13,4 +13,6 @@ open class CarDaoImpl @Autowired constructor(val carMapper: CarMapper) : CarDao 
 
     override fun findCarById(carId: String): Car? = carMapper.findById(carId)
 
+    override fun findCarsByUserId(userId: String): List<Car> = carMapper.findByUserId(userId)
+
 }

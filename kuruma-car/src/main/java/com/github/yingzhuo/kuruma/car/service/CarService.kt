@@ -9,4 +9,7 @@ interface CarService {
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     fun findCarById(carId: String): Car
 
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    fun findCarsByUserId(userId: String): List<Car>
+
 }

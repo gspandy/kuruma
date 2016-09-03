@@ -7,6 +7,8 @@
         <result property="name" column="NAME"/>
         <result property="licence" column="LICENCE"/>
         <result property="description" column="DESCRIPTION"/>
+        <result property="userId" column="USER_ID"/>
+        <result property="createDate" column="CREATED_DATE"/>
     </resultMap>
 
 </mapper>

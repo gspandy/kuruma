@@ -12,4 +12,18 @@ open class CarServiceImpl @Autowired constructor(val carDao: CarDao) : CarServic
 
     override fun findCarById(carId: String): Car = carDao.findCarById(carId) ?: throw ResourceNotFoundException()
 
+    override fun findCarsByUserId(userId: String): List<Car> {
+        if (userId.isBlank()) {
+            return listOf()
+        }
+
+        val cars = carDao.findCarsByUserId(userId)
+
+        if (cars.isEmpty()) {
+            throw ResourceNotFoundException()
+        }
+
+        return cars
+    }
+
 }

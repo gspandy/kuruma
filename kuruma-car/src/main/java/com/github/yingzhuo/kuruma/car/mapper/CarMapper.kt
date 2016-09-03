@@ -16,4 +16,8 @@ interface CarMapper {
     @Select("SELECT * FROM T_CAR WHERE ID = #{id}")
     fun findById(@Param("id") carId: String): Car?
 
+    @ResultMap("car.base")
+    @Select("SELECT * FROM T_CAR WHERE USER_ID = #{userId} ORDER BY CREATED_DATE DESC")
+    fun findByUserId(@Param("userId") userId: String): List<Car>
+
 }
