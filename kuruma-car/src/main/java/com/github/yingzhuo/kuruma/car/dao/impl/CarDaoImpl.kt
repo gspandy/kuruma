@@ -19,4 +19,16 @@ open class CarDaoImpl @Autowired constructor(val carMapper: CarMapper) : CarDao 
         carMapper.saveCar(car)
     }
 
+    override fun updateCarName(id: String, name: String) {
+        carMapper.updateCarName(id, name)
+    }
+
+    override fun updateCarDescription(id: String, description: String) {
+        carMapper.updateCarDescription(id, description)
+    }
+
+    override fun updateCarLicence(id: String, licence: String) {
+        carMapper.updateCarLicence(id, licence)
+    }
+
 }

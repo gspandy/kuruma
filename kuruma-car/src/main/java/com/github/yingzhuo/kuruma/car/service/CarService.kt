@@ -16,4 +16,13 @@ interface CarService {
     @Transactional(propagation = Propagation.REQUIRED)
     fun saveCar(carRequest: CarRequest): Car
 
+    @Transactional(propagation = Propagation.REQUIRED)
+    fun updateCarName(id: String, name: String): Unit
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    fun updateCarDescription(id: String, description: String): Unit
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    fun updateCarLicence(id: String, licence: String): Unit
+
 }

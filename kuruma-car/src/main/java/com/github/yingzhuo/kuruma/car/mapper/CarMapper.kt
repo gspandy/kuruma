@@ -25,4 +25,13 @@ interface CarMapper {
     """)
     fun saveCar(car: Car): Unit
 
+    @Update("UPDATE T_CAR SET NAME = #{name} WHERE ID = #{id}")
+    fun updateCarName(@Param("id") id: String, @Param("name") name: String): Unit
+
+    @Update("UPDATE T_CAR SET DESCRIPTION = #{description} WHERE ID = #{id}")
+    fun updateCarDescription(@Param("id") id: String, @Param("description") description: String): Unit
+
+    @Update("UPDATE T_CAR SET LICENCE = #{licence} WHERE ID = #{id}")
+    fun updateCarLicence(@Param("id") id: String, @Param("licence") licence: String): Unit
+
 }

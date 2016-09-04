@@ -46,4 +46,16 @@ open class CarController @Autowired constructor(val carService: CarService) {
                 .asResponseEntity()
     }
 
+    // TODO:
+    @PutMapping("{carId}", params = arrayOf("name"))
+    fun updateCarName(
+            @PathVariable("carId") carId: String,
+            @RequestParam("name") name: String): ResponseEntity<Json> {
+
+        carService.updateCarName(carId, name)
+        return Json.create(HttpStatus.CREATED)
+                .asResponseEntity()
+    }
+
+
 }

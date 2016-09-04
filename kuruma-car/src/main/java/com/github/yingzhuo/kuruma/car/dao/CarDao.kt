@@ -12,4 +12,10 @@ interface CarDao {
 
     fun saveCar(car: Car)
 
+    fun updateCarName(id: String, name: String): Unit
+
+    fun updateCarDescription(id: String, description: String): Unit
+
+    fun updateCarLicence(id: String, licence: String): Unit
+
 }

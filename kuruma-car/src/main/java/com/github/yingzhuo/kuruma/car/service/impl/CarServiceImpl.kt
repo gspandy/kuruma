@@ -38,4 +38,26 @@ open class CarServiceImpl @Autowired constructor(val carDao: CarDao) : CarServic
         carDao.saveCar(car)
         return car
     }
+
+    override fun updateCarName(id: String, name: String) {
+        if (!carDao.existsCarById(id)) {
+            throw ResourceNotFoundException()
+        }
+        carDao.updateCarName(id, name)
+    }
+
+    override fun updateCarDescription(id: String, description: String) {
+        if (!carDao.existsCarById(id)) {
+            throw ResourceNotFoundException()
+        }
+        carDao.updateCarDescription(id, description)
+    }
+
+    override fun updateCarLicence(id: String, licence: String) {
+        if (!carDao.existsCarById(id)) {
+            throw ResourceNotFoundException()
+        }
+        carDao.updateCarLicence(id, licence)
+    }
+
 }
