@@ -46,18 +46,18 @@ open class UserController @Autowired constructor(val userService: UserService) {
                 .asResponseEntity()
     }
 
-    @PutMapping("{userId}/gender/{gender}")
-    open fun updateGender(@PathVariable("userId") userId: String, @PathVariable("gender") gender: Gender): ResponseEntity<Json> {
+    @PutMapping("{userId}", params = arrayOf("gender"))
+    open fun updateGender(@PathVariable("userId") userId: String, @RequestParam("gender") gender: Gender): ResponseEntity<Json> {
         userService.updateUserGender(userId, gender)
         return Json.create(HttpStatus.CREATED)
                 .asResponseEntity()
     }
 
-    @PutMapping("{userId}/password/{newPassword}")
+    @PutMapping("{userId}", params = arrayOf("password", "oldPassword"))
     open fun updatePassword(
             @PathVariable("userId") userId: String,
-            @PathVariable("newPassword") newPassword: String,
-            @MatrixVariable(name = "o", pathVar = "newPassword", required = true) oldPassword: String): ResponseEntity<Json> {
+            @RequestParam("password") newPassword: String,
+            @RequestParam("oldPassword") oldPassword: String): ResponseEntity<Json> {
 
         LOGGER.debug("old pwd: {}", oldPassword)
         LOGGER.debug("new pwd: {}", newPassword)

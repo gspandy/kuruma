@@ -46,7 +46,6 @@ open class CarController @Autowired constructor(val carService: CarService) {
                 .asResponseEntity()
     }
 
-    // TODO:
     @PutMapping("{carId}", params = arrayOf("name"))
     fun updateCarName(
             @PathVariable("carId") carId: String,
@@ -57,5 +56,25 @@ open class CarController @Autowired constructor(val carService: CarService) {
                 .asResponseEntity()
     }
 
+    @PutMapping("{carId}", params = arrayOf("description"))
+    fun updateCarDescription(
+            @PathVariable("carId") carId: String,
+            @RequestParam("description") description: String): ResponseEntity<Json> {
 
+        carService.updateCarDescription(carId, description)
+        return Json.create(HttpStatus.CREATED)
+                .asResponseEntity()
+    }
+
+    @PutMapping("{carId}")
+    fun updateCarLicence(
+            @PathVariable("carId") carId: String,
+            @RequestParam("licence") licence: String
+    ): ResponseEntity<Json> {
+
+        carService.updateCarLicence(carId, licence)
+        return Json.create(HttpStatus.CREATED)
+                .asResponseEntity()
+
+    }
 }
