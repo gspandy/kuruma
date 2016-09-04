@@ -21,4 +21,5 @@ open class ApplicationConfigMybatis {
     open fun txManager(dataSource: DataSource): PlatformTransactionManager {
         return DataSourceTransactionManager(dataSource)
     }
+
 }

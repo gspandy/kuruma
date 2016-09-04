@@ -9,4 +9,7 @@ interface CarDao {
     fun findCarById(carId: String): Car?
 
     fun findCarsByUserId(userId: String): List<Car>
+
+    fun saveCar(car: Car)
+
 }
