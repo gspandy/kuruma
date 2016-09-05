@@ -8,6 +8,7 @@
     <artifactId>kuruma</artifactId>
     <version>1.0.0</version>
     <modules>
+        <module>kuruma-bill</module>
         <module>kuruma-car</module>
         <module>kuruma-common</module>
         <module>kuruma-config-server</module>

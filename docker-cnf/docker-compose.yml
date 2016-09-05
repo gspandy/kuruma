@@ -79,3 +79,21 @@ car:
   entrypoint: dockerize -wait tcp://redis:6379 -timeout 60s
   entrypoint: dockerize -wait tcp://configserver:8888 -timeout 60s
   command: bash -c "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
+
+bill:
+  image: yingzhuo/kuruma-bill:latest
+  ports:
+    - 7779:7779
+  volumes:
+    - /tmp:/tmp
+    - /home/yingzhuo/projects/kuruma/logs/bill/:/log/
+  environment:
+    - SPRING_PROFILES_ACTIVE=cloud
+  links:
+      - mysql:mysql
+      - redis:redis
+      - config_server:configserver
+  entrypoint: dockerize -wait tcp://mysql:3306 -timeout 60s
+  entrypoint: dockerize -wait tcp://redis:6379 -timeout 60s
+  entrypoint: dockerize -wait tcp://configserver:8888 -timeout 60s
+  command: bash -c "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
