@@ -1,5 +1,6 @@
 package com.github.yingzhuo.kuruma.user
 
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.cache.CacheManager
 import org.springframework.cache.annotation.CachingConfigurerSupport
 import org.springframework.cache.annotation.EnableCaching
@@ -11,11 +12,13 @@ import org.springframework.data.redis.connection.RedisConnectionFactory
 import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.data.redis.core.StringRedisTemplate
 import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer
-import java.util.concurrent.TimeUnit
 
 @Configuration
 @EnableCaching
 open class ApplicationConfigRedis : CachingConfigurerSupport() {
+
+    @Value("\${redisDefaultTTL:1800}")
+    var redisDefaultTTL: Long = -1
 
     @Bean(name = arrayOf("keyGenerator", "keyGen", "kg"))
     override fun keyGenerator(): KeyGenerator = KeyGenerator { target, method, params ->
@@ -38,7 +41,7 @@ open class ApplicationConfigRedis : CachingConfigurerSupport() {
     @Bean
     open fun cacheManager(redisTemplate: RedisTemplate<*, *>): CacheManager {
         val manager = RedisCacheManager(redisTemplate)
-        manager.setDefaultExpiration(TimeUnit.HOURS.toSeconds(1))
+        manager.setDefaultExpiration(redisDefaultTTL)
         return manager
     }
 
