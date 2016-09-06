@@ -2,4 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bill">
 
+    <resultMap id="base" type="Bill">
+        <id property="id" column="ID"/>
+        <result property="sum" column="SUM"/>
+        <result property="comment" column="COMMENT"/>
+        <result property="carId" column="CAR_ID"/>
+        <result property="userId" column="USER_ID"/>
+        <result property="createdDate" column="CREATED_DATE"/>
+    </resultMap>
+
 </mapper>
