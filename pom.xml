@@ -12,6 +12,7 @@
         <module>kuruma-car</module>
         <module>kuruma-common</module>
         <module>kuruma-config-server</module>
+        <module>kuruma-corenode</module>
         <module>kuruma-user</module>
     </modules>
     <packaging>pom</packaging>
@@ -25,6 +26,7 @@
         <spring.version>4.3.2.RELEASE</spring.version>
         <slf4j.version>1.7.21</slf4j.version>
         <jackson.version>2.8.1</jackson.version>
+        <jersey.version>1.19.2</jersey.version>
     </properties>
 
     <dependencyManagement>
@@ -153,6 +155,21 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-config-client</artifactId>
                 <version>1.1.3.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-eureka</artifactId>
+                <version>1.1.5.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-eureka-server</artifactId>
+                <version>1.1.5.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-hystrix</artifactId>
+                <version>1.1.5.RELEASE</version>
             </dependency>
 
             <!-- spring -->
@@ -309,6 +326,33 @@
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>1.1.1</version>
+            </dependency>
+
+            <!-- jersey -->
+            <dependency>
+                <groupId>com.sun.jersey</groupId>
+                <artifactId>jersey-core</artifactId>
+                <version>${jersey.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.jersey</groupId>
+                <artifactId>jersey-json</artifactId>
+                <version>${jersey.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.jersey</groupId>
+                <artifactId>jersey-client</artifactId>
+                <version>${jersey.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.jersey</groupId>
+                <artifactId>jersey-server</artifactId>
+                <version>${jersey.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.jersey</groupId>
+                <artifactId>jersey-servlet</artifactId>
+                <version>${jersey.version}</version>
             </dependency>
 
             <!-- commons -->

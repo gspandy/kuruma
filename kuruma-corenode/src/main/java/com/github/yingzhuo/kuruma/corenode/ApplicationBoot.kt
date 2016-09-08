@@ -1,4 +1,4 @@
-package com.github.yingzhuo.kuruma.car
+package com.github.yingzhuo.kuruma.corenode
 
 import org.apache.commons.lang3.time.DateFormatUtils
 import org.slf4j.LoggerFactory
@@ -7,10 +7,12 @@ import org.springframework.boot.ApplicationArguments
 import org.springframework.boot.ApplicationRunner
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer
 import org.springframework.core.Ordered
 import org.springframework.core.env.Environment
 import java.util.*
 
+@EnableEurekaServer
 @SpringBootApplication
 open class ApplicationBoot @Autowired constructor(val env: Environment) : ApplicationRunner, Ordered {
 
