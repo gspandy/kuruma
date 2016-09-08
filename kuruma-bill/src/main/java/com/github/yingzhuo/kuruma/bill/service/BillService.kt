@@ -15,4 +15,10 @@ interface BillService {
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     fun findBillsByCarId(carId: String): List<Bill>
 
+    @Transactional(propagation = Propagation.REQUIRED)
+    fun deleteBillsByCarId(carId: String)
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    fun deleteBillsByBillId(billId: String)
+
 }

@@ -15,4 +15,12 @@ open class BillDaoImpl @Autowired constructor(val billMapper: BillMapper) : Bill
 
     override fun findBillsByCarId(carId: String): List<Bill> = billMapper.findByCarId(carId)
 
+    override fun deleteByCarId(carId: String) {
+        billMapper.deleteByCarId(carId)
+    }
+
+    override fun deleteByBillId(billId: String) {
+        billMapper.deleteByBillId(billId)
+    }
+
 }
