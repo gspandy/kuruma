@@ -12,6 +12,7 @@ docker-compose -f /home/yingzhuo/projects/kuruma/docker-compose.yml down 2> /dev
 docker rmi yingzhuo/kuruma-car:latest 2> /dev/null
 docker rmi yingzhuo/kuruma-user:latest 2> /dev/null
 docker rmi yingzhuo/kuruma-bill:latest 2> /dev/null
+docker rmi yingzhuo/kuruma-corenode:latest 2> /dev/null
 docker rmi yingzhuo/kuruma-config-server:latest 2> /dev/null
 
 # 下载源文件
@@ -25,6 +26,7 @@ mvn -f /tmp/kuruma/pom.xml clean package -U -Dmaven.test.skip=true
 mvn -f /tmp/kuruma/kuruma-bill/pom.xml docker:build
 mvn -f /tmp/kuruma/kuruma-car/pom.xml docker:build
 mvn -f /tmp/kuruma/kuruma-user/pom.xml docker:build
+mvn -f /tmp/kuruma/kuruma-corenode/pom.xml docker:build
 mvn -f /tmp/kuruma/kuruma-config-server/pom.xml docker:build
 
 # 复制docker-compose.yml 文件
@@ -37,4 +39,5 @@ mvn -f /tmp/kuruma/pom.xml clean -q
 #重启项目
 docker-compose -f /home/yingzhuo/projects/kuruma/docker-compose.yml up -d
 
+# 退出
 exit 0

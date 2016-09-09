@@ -12,7 +12,7 @@ import org.springframework.core.env.Environment
 import java.util.*
 
 @SpringBootApplication
-open class ApplicationBoot @Autowired constructor(val env: Environment): ApplicationRunner, Ordered {
+open class ApplicationBoot @Autowired constructor(val env: Environment) : ApplicationRunner, Ordered {
 
     companion object {
         private val LOGGER = LoggerFactory.getLogger(ApplicationBoot::class.java)

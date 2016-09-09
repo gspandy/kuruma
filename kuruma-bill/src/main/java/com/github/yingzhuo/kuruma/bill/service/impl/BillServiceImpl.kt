@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service("billService")
-open class BillServiceImpl @Autowired constructor(val billDao: BillDao): BillService {
+open class BillServiceImpl @Autowired constructor(val billDao: BillDao) : BillService {
 
     override fun findBillById(billId: String): Bill {
         return billDao.findBillById(billId) ?: throw ResourceNotFoundException()

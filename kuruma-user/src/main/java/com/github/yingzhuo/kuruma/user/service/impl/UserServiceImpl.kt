@@ -86,7 +86,7 @@ open class UserServiceImpl @Autowired constructor(
             throw ResourceNotFoundException()
         }
 
-        if (! userDao.testPasswordByUserId(userId, passwordHasher.hash(oldPassword))) {
+        if (!userDao.testPasswordByUserId(userId, passwordHasher.hash(oldPassword))) {
             LOGGER.debug("旧密码错误")
             throw ForbiddenException()
         }

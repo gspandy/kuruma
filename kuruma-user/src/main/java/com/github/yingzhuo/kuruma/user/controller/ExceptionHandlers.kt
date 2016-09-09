@@ -59,7 +59,7 @@ open class ExceptionHandlers {
         }
 
         if (ex.errors.isNotEmpty()) {
-            return ex.errors.map { it.defaultMessage } .toList().toTypedArray()
+            return ex.errors.map { it.defaultMessage }.toList().toTypedArray()
         }
 
         return arrayOf()

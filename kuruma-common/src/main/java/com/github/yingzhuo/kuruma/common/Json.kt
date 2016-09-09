@@ -6,7 +6,7 @@ import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import java.io.Serializable
 
-class Json private constructor(val code: Int, val messages: Array<String>): Serializable {
+class Json private constructor(val code: Int, val messages: Array<String>) : Serializable {
 
     private val _payload: MutableMap<String, Any> = mutableMapOf()
     val payload: Map<String, Any> get() = _payload
