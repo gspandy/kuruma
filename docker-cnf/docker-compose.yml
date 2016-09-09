@@ -56,6 +56,8 @@ config_server:
     - /home/yingzhuo/projects/kuruma/logs/config-server/:/log/
   environment:
     - SPRING_PROFILES_ACTIVE=cloud
+  links:
+    corenode:corenode
   command: bash -c "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
 
 user:

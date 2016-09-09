@@ -6,12 +6,18 @@ import org.springframework.boot.ApplicationArguments
 import org.springframework.boot.ApplicationRunner
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient
 import org.springframework.cloud.config.server.EnableConfigServer
+import org.springframework.cloud.netflix.feign.EnableFeignClients
+import org.springframework.cloud.netflix.hystrix.EnableHystrix
 import org.springframework.core.env.Environment
 import java.util.*
 import javax.annotation.PostConstruct
 
 @EnableConfigServer
+@EnableDiscoveryClient
+@EnableHystrix
+@EnableFeignClients
 @SpringBootApplication
 open class ApplicationBoot constructor(val env: Environment) : ApplicationRunner {
 
