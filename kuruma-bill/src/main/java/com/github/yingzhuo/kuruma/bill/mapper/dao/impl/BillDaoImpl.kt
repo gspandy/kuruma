@@ -23,4 +23,8 @@ open class BillDaoImpl @Autowired constructor(val billMapper: BillMapper) : Bill
         billMapper.deleteByBillId(billId)
     }
 
+    override fun saveBill(bill: Bill) {
+        billMapper.saveBill(bill)
+    }
+
 }

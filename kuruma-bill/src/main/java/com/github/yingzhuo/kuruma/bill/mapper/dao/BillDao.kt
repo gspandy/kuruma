@@ -14,4 +14,6 @@ interface BillDao {
 
     fun deleteByBillId(billId: String)
 
+    fun saveBill(bill: Bill)
+
 }

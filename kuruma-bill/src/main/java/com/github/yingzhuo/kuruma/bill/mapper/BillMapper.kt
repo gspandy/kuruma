@@ -24,4 +24,12 @@ interface BillMapper {
     @Delete("DELETE FROM T_BILL WHERE ID = #{id}")
     fun deleteByBillId(@Param("id") billId: String)
 
+    @Insert("""
+    INSERT INTO
+        T_BILL (ID, SUM, COMMENT, CAR_ID, USER_ID, CREATED_DATE)
+    VALUES
+        ( #{id}, #{sum}, #{comment}, #{carId}, #{userId}, #{createdDate} )
+    """)
+    fun saveBill(bill: Bill)
+
 }
