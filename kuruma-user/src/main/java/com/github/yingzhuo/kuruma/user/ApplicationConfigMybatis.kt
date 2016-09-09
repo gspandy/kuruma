@@ -19,7 +19,7 @@ open class ApplicationConfigMybatis {
 
 
     @Bean
-    open fun txManager(dataSource: DataSource): PlatformTransactionManager {
+    open fun transactionManager(dataSource: DataSource): PlatformTransactionManager {
         return DataSourceTransactionManager(dataSource)
     }
 
