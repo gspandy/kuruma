@@ -57,7 +57,7 @@ config_server:
   environment:
     - SPRING_PROFILES_ACTIVE=cloud
   links:
-    corenode:corenode
+    - corenode:corenode
   command: bash -c "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
 
 user:
