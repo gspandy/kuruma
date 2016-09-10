@@ -1,7 +1,5 @@
 package com.github.yingzhuo.kuruma.common.exception
 
-import org.springframework.validation.ObjectError
-
 /**
  * 业务异常
  */
@@ -25,12 +23,4 @@ open class ResourceNotFoundException(message: String? = null) : BusinessExceptio
 /**
  * 错误的请求异常
  */
-open class BadRequestException constructor(message: String? = null) : BusinessException(message) {
-
-    var errors: List<ObjectError> = listOf()
-
-    constructor(errors: List<ObjectError>) : this() {
-        this.errors = errors
-    }
-
-}
+open class BadRequestException(message: String? = null) : BusinessException(message)

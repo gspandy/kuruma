@@ -1,16 +1,13 @@
 package com.github.yingzhuo.kuruma.car.controller
 
-import com.github.yingzhuo.kuruma.car.controller.request.CarRequest
 import com.github.yingzhuo.kuruma.car.service.CarService
 import com.github.yingzhuo.kuruma.common.Json
-import com.github.yingzhuo.kuruma.common.exception.BadRequestException
-import com.github.yingzhuo.kuruma.common.validate.Create
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.validation.BindingResult
-import org.springframework.validation.annotation.Validated
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("cars")
@@ -32,49 +29,4 @@ open class CarController @Autowired constructor(val carService: CarService) {
                 .asResponseEntity()
     }
 
-    @PostMapping
-    open fun saveCar(
-            @Validated(Create::class) carRequest: CarRequest,
-            bindingResult: BindingResult): ResponseEntity<Json> {
-
-        if (bindingResult.hasErrors()) {
-            throw BadRequestException(bindingResult.allErrors)
-        }
-
-        carService.saveCar(carRequest)
-        return Json.create(HttpStatus.CREATED)
-                .asResponseEntity()
-    }
-
-    @PutMapping("{carId}", params = arrayOf("name"))
-    fun updateCarName(
-            @PathVariable("carId") carId: String,
-            @RequestParam("name") name: String): ResponseEntity<Json> {
-
-        carService.updateCarName(carId, name)
-        return Json.create(HttpStatus.CREATED)
-                .asResponseEntity()
-    }
-
-    @PutMapping("{carId}", params = arrayOf("description"))
-    fun updateCarDescription(
-            @PathVariable("carId") carId: String,
-            @RequestParam("description") description: String): ResponseEntity<Json> {
-
-        carService.updateCarDescription(carId, description)
-        return Json.create(HttpStatus.CREATED)
-                .asResponseEntity()
-    }
-
-    @PutMapping("{carId}")
-    fun updateCarLicence(
-            @PathVariable("carId") carId: String,
-            @RequestParam("licence") licence: String
-    ): ResponseEntity<Json> {
-
-        carService.updateCarLicence(carId, licence)
-        return Json.create(HttpStatus.CREATED)
-                .asResponseEntity()
-
-    }
 }

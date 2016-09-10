@@ -12,7 +12,6 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients
 import org.springframework.cloud.netflix.hystrix.EnableHystrix
 import org.springframework.core.env.Environment
 import java.util.*
-import javax.annotation.PostConstruct
 
 const val APP: String = "kuruma-config-server"
 
@@ -25,11 +24,6 @@ open class ApplicationBoot constructor(val env: Environment) : ApplicationRunner
 
     companion object {
         private val LOGGER = LoggerFactory.getLogger(ApplicationBoot::class.java)
-    }
-
-    @PostConstruct
-    open fun init() {
-        LOGGER.debug("'${ApplicationBoot::class.java.simpleName}'初始化")
     }
 
     override fun run(args: ApplicationArguments) {

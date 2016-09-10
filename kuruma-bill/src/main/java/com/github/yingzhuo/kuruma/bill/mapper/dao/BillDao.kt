@@ -10,10 +10,4 @@ interface BillDao {
 
     fun findBillsByCarId(carId: String): List<Bill>
 
-    fun deleteByCarId(carId: String)
-
-    fun deleteByBillId(billId: String)
-
-    fun saveBill(bill: Bill)
-
 }

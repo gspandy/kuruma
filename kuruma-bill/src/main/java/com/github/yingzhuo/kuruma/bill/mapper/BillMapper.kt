@@ -1,7 +1,10 @@
 package com.github.yingzhuo.kuruma.bill.mapper
 
 import com.github.yingzhuo.kuruma.common.entity.Bill
-import org.apache.ibatis.annotations.*
+import org.apache.ibatis.annotations.Mapper
+import org.apache.ibatis.annotations.Param
+import org.apache.ibatis.annotations.ResultMap
+import org.apache.ibatis.annotations.Select
 
 @Mapper
 interface BillMapper {
@@ -17,19 +20,5 @@ interface BillMapper {
     @ResultMap("bill.base")
     @Select("SELECT * FROM T_BILL WHERE CAR_ID = #{carId} ORDER BY CREATED_DATE DESC")
     fun findByCarId(@Param("carId") carId: String): List<Bill>
-
-    @Delete("DELETE FROM T_BILL WHERE CAR_ID = #{carId}")
-    fun deleteByCarId(@Param("carId") carId: String)
-
-    @Delete("DELETE FROM T_BILL WHERE ID = #{id}")
-    fun deleteByBillId(@Param("id") billId: String)
-
-    @Insert("""
-    INSERT INTO
-        T_BILL (ID, SUM, COMMENT, CAR_ID, USER_ID, CREATED_DATE)
-    VALUES
-        ( #{id}, #{sum}, #{comment}, #{carId}, #{userId}, #{createdDate} )
-    """)
-    fun saveBill(bill: Bill)
 
 }

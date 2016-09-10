@@ -1,15 +1,11 @@
 package com.github.yingzhuo.kuruma.bill.service.impl
 
-import com.github.yingzhuo.kuruma.bill.controller.request.BillRequest
 import com.github.yingzhuo.kuruma.bill.mapper.dao.BillDao
 import com.github.yingzhuo.kuruma.bill.service.BillService
 import com.github.yingzhuo.kuruma.common.entity.Bill
 import com.github.yingzhuo.kuruma.common.exception.ResourceNotFoundException
-import com.github.yingzhuo.kuruma.common.uuid
-import org.apache.commons.beanutils.PropertyUtils
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import java.util.*
 
 @Service("billService")
 open class BillServiceImpl @Autowired constructor(val billDao: BillDao) : BillService {
@@ -37,22 +33,4 @@ open class BillServiceImpl @Autowired constructor(val billDao: BillDao) : BillSe
 
         return bills
     }
-
-    override fun deleteBillsByCarId(carId: String) {
-        billDao.deleteByCarId(carId)
-    }
-
-    override fun deleteBillsByBillId(billId: String) {
-        billDao.deleteByBillId(billId)
-    }
-
-    override fun saveBill(billRequest: BillRequest): Bill {
-        val bill = Bill()
-        bill.id = uuid()
-        bill.createdDate = Date()
-        PropertyUtils.copyProperties(bill, billRequest)
-        billDao.saveBill(bill)
-        return bill
-    }
-
 }

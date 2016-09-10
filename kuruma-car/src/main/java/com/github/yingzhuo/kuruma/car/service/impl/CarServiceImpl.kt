@@ -1,15 +1,11 @@
 package com.github.yingzhuo.kuruma.car.service.impl
 
-import com.github.yingzhuo.kuruma.car.controller.request.CarRequest
 import com.github.yingzhuo.kuruma.car.dao.CarDao
 import com.github.yingzhuo.kuruma.car.service.CarService
 import com.github.yingzhuo.kuruma.common.entity.Car
 import com.github.yingzhuo.kuruma.common.exception.ResourceNotFoundException
-import com.github.yingzhuo.kuruma.common.uuid
-import org.apache.commons.beanutils.PropertyUtils
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import java.util.*
 
 @Service("carService")
 open class CarServiceImpl @Autowired constructor(val carDao: CarDao) : CarService {
@@ -17,10 +13,6 @@ open class CarServiceImpl @Autowired constructor(val carDao: CarDao) : CarServic
     override fun findCarById(carId: String): Car = carDao.findCarById(carId) ?: throw ResourceNotFoundException()
 
     override fun findCarsByUserId(userId: String): List<Car> {
-        if (userId.isBlank()) {
-            return listOf()
-        }
-
         val cars = carDao.findCarsByUserId(userId)
 
         if (cars.isEmpty()) {
@@ -28,36 +20,6 @@ open class CarServiceImpl @Autowired constructor(val carDao: CarDao) : CarServic
         }
 
         return cars
-    }
-
-    override fun saveCar(carRequest: CarRequest): Car {
-        val car = Car()
-        car.id = uuid()
-        car.createdDate = Date()
-        PropertyUtils.copyProperties(car, carRequest)
-        carDao.saveCar(car)
-        return car
-    }
-
-    override fun updateCarName(id: String, name: String) {
-        if (!carDao.existsCarById(id)) {
-            throw ResourceNotFoundException()
-        }
-        carDao.updateCarName(id, name)
-    }
-
-    override fun updateCarDescription(id: String, description: String) {
-        if (!carDao.existsCarById(id)) {
-            throw ResourceNotFoundException()
-        }
-        carDao.updateCarDescription(id, description)
-    }
-
-    override fun updateCarLicence(id: String, licence: String) {
-        if (!carDao.existsCarById(id)) {
-            throw ResourceNotFoundException()
-        }
-        carDao.updateCarLicence(id, licence)
     }
 
 }
