@@ -14,6 +14,8 @@ import org.springframework.core.env.Environment
 import java.util.*
 import javax.annotation.PostConstruct
 
+const val APP: String = "kuruma-config-server"
+
 @EnableConfigServer
 @EnableDiscoveryClient
 @EnableHystrix
@@ -32,6 +34,8 @@ open class ApplicationBoot constructor(val env: Environment) : ApplicationRunner
 
     override fun run(args: ApplicationArguments) {
         LOGGER.info("-".repeat(80))
+        LOGGER.info("应用:")
+        LOGGER.info("\t\t{}", APP)
         LOGGER.info("情景模式:")
         LOGGER.info("\t\t{}", env.activeProfiles.asList())
         LOGGER.info("启动时间:")

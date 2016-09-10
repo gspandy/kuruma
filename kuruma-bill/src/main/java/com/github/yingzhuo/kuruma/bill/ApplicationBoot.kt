@@ -11,6 +11,8 @@ import org.springframework.core.Ordered
 import org.springframework.core.env.Environment
 import java.util.*
 
+const val APP: String = "kuruma-bill"
+
 @SpringBootApplication
 open class ApplicationBoot @Autowired constructor(val env: Environment) : ApplicationRunner, Ordered {
 
@@ -22,6 +24,8 @@ open class ApplicationBoot @Autowired constructor(val env: Environment) : Applic
 
     override fun run(args: ApplicationArguments) {
         LOGGER.info("-".repeat(80))
+        LOGGER.info("应用:")
+        LOGGER.info("\t\t{}", APP)
         LOGGER.info("情景模式:")
         LOGGER.info("\t\t{}", env.activeProfiles.asList())
         LOGGER.info("启动时间:")

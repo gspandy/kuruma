@@ -12,6 +12,9 @@
         </appender>
 
         <logger name="com.github.yingzhuo.kuruma" level="TRACE"/>
+        <logger name="com.netflix.discovery" level="ERROR"/>
+        <logger name="com.netflix.discovery.DiscoveryClient" level="OFF"/>
+        <logger name="com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient" level="OFF"/>
 
         <root level="INFO">
             <appender-ref ref="STDOUT"/>
@@ -40,6 +43,9 @@
         </appender>
 
         <logger name="com.github.yingzhuo.kuruma" level="TRACE"/>
+        <logger name="com.netflix.discovery" level="ERROR"/>
+        <logger name="com.netflix.discovery.DiscoveryClient" level="OFF"/>
+        <logger name="com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient" level="OFF"/>
 
         <root level="INFO">
             <appender-ref ref="STDOUT"/>
