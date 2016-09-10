@@ -73,6 +73,7 @@ user:
       - mysql:mysql
       - redis:redis
       - config_server:configserver
+      - corenode:corenode
   entrypoint: dockerize -wait tcp://mysql:3306 -timeout 60s
   entrypoint: dockerize -wait tcp://redis:6379 -timeout 60s
   entrypoint: dockerize -wait tcp://configserver:8888 -timeout 60s
@@ -91,6 +92,7 @@ car:
       - mysql:mysql
       - redis:redis
       - config_server:configserver
+      - corenode:corenode
   entrypoint: dockerize -wait tcp://mysql:3306 -timeout 60s
   entrypoint: dockerize -wait tcp://redis:6379 -timeout 60s
   entrypoint: dockerize -wait tcp://configserver:8888 -timeout 60s
@@ -109,6 +111,7 @@ bill:
       - mysql:mysql
       - redis:redis
       - config_server:configserver
+      - corenode:corenode
   entrypoint: dockerize -wait tcp://mysql:3306 -timeout 60s
   entrypoint: dockerize -wait tcp://redis:6379 -timeout 60s
   entrypoint: dockerize -wait tcp://configserver:8888 -timeout 60s
