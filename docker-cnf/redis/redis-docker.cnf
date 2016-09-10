@@ -1,0 +1,3 @@
+requirepass 133810
+bind 0.0.0.0
+protected-mode no

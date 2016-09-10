@@ -19,7 +19,7 @@ mysql:
     - /tmp:/tmp
     - /etc/timezone:/etc/timezone
     - /home/yingzhuo/projects/kuruma/volume/mysql/data:/var/lib/mysql
-    - /home/yingzhuo/projects/kuruma/config/mysql/:/etc/mysql/conf.d
+    - /home/yingzhuo/projects/kuruma/config/mysql:/etc/mysql/conf.d
   environment:
     - MYSQL_ROOT_PASSWORD=root
     - MYSQL_DATABASE=root
