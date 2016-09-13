@@ -13,6 +13,7 @@
         <module>kuruma-common</module>
         <module>kuruma-config-server</module>
         <module>kuruma-corenode</module>
+        <module>kuruma-ui</module>
         <module>kuruma-user</module>
     </modules>
     <packaging>pom</packaging>
@@ -159,6 +160,11 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-eureka</artifactId>
+                <version>1.1.5.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-ribbon</artifactId>
                 <version>1.1.5.RELEASE</version>
             </dependency>
             <dependency>
