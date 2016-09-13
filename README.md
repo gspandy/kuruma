@@ -1,3 +1,7 @@
+[![JDK](http://img.shields.io/badge/JDK-v8.0-yellow.svg)](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+[![Build](http://img.shields.io/badge/Build-Maven_2-green.svg)](https://maven.apache.org/)
+[![License](http://img.shields.io/badge/License-Apache_2-red.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+
 ## 简介
 
 本项目是一个演示项目，旨在展示使用`SpringCloud`框架与`Docker`技术构建一个分布式的、微服务化的分布式Java服务器应用。本项目虚构一个需求，服务器用来管理用户的车辆和有车辆产生的指出。模块划分大致有以下几个部分：
@@ -78,17 +82,17 @@ kuruma/
 
 > 注意: 上面被emoji📃标出的是文件，文件内容下面给出。其余的都是目录，依次自行创建即可。
 
-* [mysql-docker.cnf](https://github.com/yingzhuo/kuruma/tree/master/docker-cnf/mysql/mysql-docker.cnf)
-* [redis-docker.cnf](https://github.com/yingzhuo/kuruma/tree/master/docker-cnf/redis/redis-docker.cnf)
-* [docker-compose.yml](https://github.com/yingzhuo/kuruma/blob/master/docker-cnf/docker-compose.yml)
-* [rerun.sh](https://github.com/yingzhuo/kuruma/blob/master/rerun.sh)
+* [mysql-docker.cnf](https://raw.githubusercontent.com/yingzhuo/kuruma/master/docker-cnf/mysql/mysql-docker.cnf)
+* [redis-docker.cnf](https://raw.githubusercontent.com/yingzhuo/kuruma/master/docker-cnf/redis/redis-docker.cnf)
+* [docker-compose.yml](https://raw.githubusercontent.com/yingzhuo/kuruma/master/docker-cnf/docker-compose.yml)
+* [rerun.sh](https://raw.githubusercontent.com/yingzhuo/kuruma/master/rerun.sh)
 
 ## 启动项目
 
 > 注意: 如果没有特别说明，那么工作目录就是上面所说的启动目录。
 
 #### 拷贝数据库脚本
-拷贝脚本[kuruma.sql](https://github.com/yingzhuo/kuruma/blob/master/data/kuruma.sql)到宿主机的`/tmp`目录下
+拷贝脚本[kuruma.sql](https://raw.githubusercontent.com/yingzhuo/kuruma/master/data/kuruma.sql)到宿主机的`/tmp`目录下
 
 #### 数据库初始化
 
@@ -145,13 +149,13 @@ docker rm duck
 rm /tmp/kuruma.sql
 ```
 
-#### 启动!
+#### 启动
 
 ```bash
 bash rerun.sh
 ```
 
-使用启动脚本即可，本脚本会自动成Github下载源代码，完成编译、打包、构建镜像、启动容器等一系列工作。
+使用启动脚本即可，这个脚本会自动成Github下载源代码，完成编译、打包、构建镜像、启动容器等一系列工作。
 
 > 注意: 这个过程需要从Maven中央库下载众多依赖的Jar包，可能耗时较长，要有耐心。
 
@@ -163,9 +167,30 @@ bash rerun.sh
 
 1. `kuruma`是日语罗马字，是“汽车”的意思。
 
+## 许可证
+
+```
+Copyright 2013-2015 Zhuo Ying, Shanghai, China. All rights reserved.
+
+  Author: 应卓
+   Email: yingzhor@gmail.com
+  WebURL: https://github.com/yingzhuo
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
+
 ## 联系我
 
 ![QQ](http://img.shields.io/badge/QQ-23007067-blue.svg)
 ![WeChat](http://img.shields.io/badge/WeChat-yingzhor-blue.svg)
 ![Email](http://img.shields.io/badge/Email-yingzhor@gmail.com-blue.svg)
-![Phone](http://img.shields.io/badge/Phone-+86_189_1694_4373-blue.svg)
