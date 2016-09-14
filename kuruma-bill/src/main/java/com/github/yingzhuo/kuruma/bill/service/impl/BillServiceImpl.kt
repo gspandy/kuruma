@@ -17,9 +17,9 @@ open class BillServiceImpl @Autowired constructor(val billDao: BillDao) : BillSe
     override fun findBillsByUserId(userId: String): List<Bill> {
         val bills = billDao.findBillsByUserId(userId)
 
-        if (bills.isEmpty()) {
-            throw ResourceNotFoundException()
-        }
+//        if (bills.isEmpty()) {
+//            throw ResourceNotFoundException()
+//        }
 
         return bills
     }
@@ -27,9 +27,9 @@ open class BillServiceImpl @Autowired constructor(val billDao: BillDao) : BillSe
     override fun findBillsByCarId(carId: String): List<Bill> {
         val bills = billDao.findBillsByCarId(carId)
 
-        if (bills.isEmpty()) {
-            throw ResourceNotFoundException()
-        }
+//        if (bills.isEmpty()) {
+//            throw ResourceNotFoundException()
+//        }
 
         return bills
     }

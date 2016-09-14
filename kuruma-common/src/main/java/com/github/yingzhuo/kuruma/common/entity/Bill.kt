@@ -1,5 +1,6 @@
 package com.github.yingzhuo.kuruma.common.entity
 
+import com.fasterxml.jackson.annotation.JsonFormat
 import com.github.yingzhuo.kuruma.common.AbstractToStringSupport
 import com.github.yingzhuo.kuruma.common.Idable
 import java.util.*
@@ -34,6 +35,7 @@ open class Bill : AbstractToStringSupport(), Idable<String> {
     /**
      * 创建时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     var createdDate: Date? = null
 
 }

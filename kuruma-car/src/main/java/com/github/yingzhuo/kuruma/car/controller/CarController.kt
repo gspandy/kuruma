@@ -22,11 +22,9 @@ open class CarController @Autowired constructor(val carService: CarService) {
     }
 
     @GetMapping("user/{userId}")
-    open fun findCarsByUserId(@PathVariable("userId") userId: String): ResponseEntity<Json> {
+    open fun findCarsByUserId(@PathVariable("userId") userId: String): Any {
         val cars = carService.findCarsByUserId(userId)
-        return Json.create()
-                .put("cars" to cars)
-                .asResponseEntity()
+        return cars
     }
 
 }

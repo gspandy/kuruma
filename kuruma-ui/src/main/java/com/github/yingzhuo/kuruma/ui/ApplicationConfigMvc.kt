@@ -32,4 +32,5 @@ open class ApplicationConfigMvc : WebMvcConfigurerAdapter() {
                 .addPathPatterns("/**")
                 .excludePathPatterns("/**/*.ico", "/**/*.js", "/**/*.css")
     }
+
 }

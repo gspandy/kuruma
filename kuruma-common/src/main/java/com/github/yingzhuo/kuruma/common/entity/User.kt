@@ -1,5 +1,6 @@
 package com.github.yingzhuo.kuruma.common.entity
 
+import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.github.yingzhuo.kuruma.common.AbstractToStringSupport
 import com.github.yingzhuo.kuruma.common.Gender
@@ -32,6 +33,7 @@ open class User : AbstractToStringSupport(), Idable<String> {
     /**
      * 注册时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     var regiesterDate: Date? = null
 
 }
