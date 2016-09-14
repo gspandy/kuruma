@@ -75,8 +75,8 @@ user:
       - redis:redis
       - config_server:configserver
       - corenode:corenode
-  entrypoint: dockerize -wait tcp://mysql:3306 -timeout 60s
-  entrypoint: dockerize -wait tcp://redis:6379 -timeout 60s
+  entrypoint: dockerize -wait tcp://mysql:3306 -timeout 3600s
+  entrypoint: dockerize -wait tcp://redis:6379 -timeout 3600s
   entrypoint: dockerize -wait tcp://configserver:8888 -timeout 3600s
   command: bash -c "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
 
@@ -94,8 +94,8 @@ car:
       - redis:redis
       - config_server:configserver
       - corenode:corenode
-  entrypoint: dockerize -wait tcp://mysql:3306 -timeout 60s
-  entrypoint: dockerize -wait tcp://redis:6379 -timeout 60s
+  entrypoint: dockerize -wait tcp://mysql:3306 -timeout 3600s
+  entrypoint: dockerize -wait tcp://redis:6379 -timeout 3600s
   entrypoint: dockerize -wait tcp://configserver:8888 -timeout 3600s
   command: bash -c "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
 
@@ -113,8 +113,8 @@ bill:
       - redis:redis
       - config_server:configserver
       - corenode:corenode
-  entrypoint: dockerize -wait tcp://mysql:3306 -timeout 60s
-  entrypoint: dockerize -wait tcp://redis:6379 -timeout 60s
+  entrypoint: dockerize -wait tcp://mysql:3306 -timeout 3600s
+  entrypoint: dockerize -wait tcp://redis:6379 -timeout 3600s
   entrypoint: dockerize -wait tcp://configserver:8888 -timeout 3600s
   command: bash -c "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
 

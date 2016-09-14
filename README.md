@@ -12,6 +12,7 @@
 * kuruma-car: 车辆管理服务
 * kuruma-bill: 车辆账单服务
 * kuruma-common: 通用工具等
+* kuruma-ui: Web系统
 
 > 注意: 本项目代码实际使用的是[Kotlin](http://kotlinlang.org/)语言。这也是一种在JVM上执行的编程语言。
 
@@ -70,7 +71,9 @@ kuruma/
 │   │   └── old
 │   ├── corenode
 │   │   └── old
-│   └── user
+│   ├── user
+│   │   └── old
+│   └── ui
 │       └── old
 ├── rerun.sh📃
 └── volume
@@ -161,7 +164,7 @@ bash rerun.sh
 
 #### 检查启动结构
 
-通过浏览器访问 `http://宿主机IP:8761`即可看到`Spring Eureka`的统计页面。 如果有四个服务被发现和注册那么说明启动成功了。
+通过浏览器访问 `http://宿主机IP:8761`即可看到`Spring Eureka`的统计页面。 如果有四个服务被发现和注册那么说明启动成功了。最后，访问`http://宿主机IP:7770/ui`即可看到UI页面。
 
 ## 其他
 
