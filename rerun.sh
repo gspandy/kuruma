@@ -11,11 +11,12 @@ WORKDIR=/home/yingzhuo/projects/kuruma
 docker-compose -f "${WORKDIR}/docker-compose.yml" down 2> /dev/null
 
 # 删除镜像
-docker rmi yingzhuo/kuruma-car:latest 2> /dev/null
-docker rmi yingzhuo/kuruma-user:latest 2> /dev/null
-docker rmi yingzhuo/kuruma-bill:latest 2> /dev/null
 docker rmi yingzhuo/kuruma-corenode:latest 2> /dev/null
 docker rmi yingzhuo/kuruma-config-server:latest 2> /dev/null
+docker rmi yingzhuo/kuruma-user:latest 2> /dev/null
+docker rmi yingzhuo/kuruma-car:latest 2> /dev/null
+docker rmi yingzhuo/kuruma-bill:latest 2> /dev/null
+docker rmi yingzhuo/kuruma-ui:latest 2> /dev/null
 
 # 下载源文件
 rm -rf /tmp/kuruma 2> /dev/null
@@ -25,11 +26,12 @@ git clone https://github.com/yingzhuo/kuruma.git "/tmp/kuruma"
 mvn -f /tmp/kuruma/pom.xml clean package -U -Dmaven.test.skip=true
 
 # 构建docker镜像
-mvn -f /tmp/kuruma/kuruma-bill/pom.xml docker:build
-mvn -f /tmp/kuruma/kuruma-car/pom.xml docker:build
-mvn -f /tmp/kuruma/kuruma-user/pom.xml docker:build
 mvn -f /tmp/kuruma/kuruma-corenode/pom.xml docker:build
 mvn -f /tmp/kuruma/kuruma-config-server/pom.xml docker:build
+mvn -f /tmp/kuruma/kuruma-user/pom.xml docker:build
+mvn -f /tmp/kuruma/kuruma-car/pom.xml docker:build
+mvn -f /tmp/kuruma/kuruma-bill/pom.xml docker:build
+mvn -f /tmp/kuruma/kuruma-ui/pom.xml docker:build
 
 # 复制docker-compose.yml 文件
 rm "${WORKDIR}/docker-compose.yml"

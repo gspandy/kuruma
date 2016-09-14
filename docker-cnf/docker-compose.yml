@@ -124,7 +124,10 @@ ui:
     - 7770:7770
   volumes:
     - /tmp:/tmp
-    - /home/yingzhuo/projects/kuruma/logs/bill/:/log/
+    - /home/yingzhuo/projects/kuruma/logs/ui/:/log/
+  links:
+      - config_server:configserver
+      - corenode:corenode
   environment:
     - SPRING_PROFILES_ACTIVE=cloud
   command: bash -c "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
