@@ -26,6 +26,13 @@
             <artifactId>spring-webmvc</artifactId>
         </dependency>
 
+        <!-- spring-boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- slf4j -->
         <dependency>
             <groupId>org.slf4j</groupId>
