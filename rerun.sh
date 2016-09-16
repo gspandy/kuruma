@@ -2,7 +2,7 @@
 ########################################################################################################################
 # 功能: 构建项目并运行
 # 作者: 应卓
-# 日期: 2016-09-03
+# 日期: 2016-09-16
 ########################################################################################################################
 
 WORKDIR=/home/yingzhuo/projects/kuruma
@@ -11,6 +11,7 @@ WORKDIR=/home/yingzhuo/projects/kuruma
 docker-compose -f "${WORKDIR}/docker-compose.yml" down 2> /dev/null
 
 # 删除镜像
+docker rmi yingzhuo/kuruma-aipgateway:latest 2> /dev/null
 docker rmi yingzhuo/kuruma-corenode:latest 2> /dev/null
 docker rmi yingzhuo/kuruma-config-server:latest 2> /dev/null
 docker rmi yingzhuo/kuruma-user:latest 2> /dev/null
@@ -28,6 +29,7 @@ mvn -f /tmp/kuruma/pom.xml clean package -U -Dmaven.test.skip=true
 # 构建docker镜像
 mvn -f /tmp/kuruma/kuruma-corenode/pom.xml docker:build
 mvn -f /tmp/kuruma/kuruma-config-server/pom.xml docker:build
+mvn -f /tmp/kuruma/kuruma-apigateway/pom.xml docker:build
 mvn -f /tmp/kuruma/kuruma-user/pom.xml docker:build
 mvn -f /tmp/kuruma/kuruma-car/pom.xml docker:build
 mvn -f /tmp/kuruma/kuruma-bill/pom.xml docker:build
