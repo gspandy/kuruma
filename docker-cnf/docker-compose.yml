@@ -47,7 +47,7 @@ corenode:
     - /home/yingzhuo/projects/kuruma/logs/corenode:/log/
   environment:
     - SPRING_PROFILES_ACTIVE=cloud
-  mem_limit: 1000000000
+    - JAVA_OPTS="-Xms5000m -Xmx10000m"
   command: bash -c "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
 
 config_server:
@@ -59,9 +59,9 @@ config_server:
     - /home/yingzhuo/projects/kuruma/logs/config-server/:/log/
   environment:
     - SPRING_PROFILES_ACTIVE=cloud
+    - JAVA_OPTS="-Xms5000m -Xmx10000m"
   links:
     - corenode:corenode
-  mem_limit: 1000000000
   command: bash -c "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
 
 apigateway:
@@ -73,12 +73,12 @@ apigateway:
     - /home/yingzhuo/projects/kuruma/logs/apigateway:/log/
   environment:
     - SPRING_PROFILES_ACTIVE=cloud
+    - JAVA_OPTS="-Xms5000m -Xmx10000m"
   links:
       - corenode:corenode
       - user:user
       - car:car
       - bill:bill
-  mem_limit: 1000000000
   command: bash -c "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
 
 user:
@@ -90,12 +90,12 @@ user:
     - /home/yingzhuo/projects/kuruma/logs/user/:/log/
   environment:
     - SPRING_PROFILES_ACTIVE=cloud
+    - JAVA_OPTS="-Xms5000m -Xmx10000m"
   links:
       - mysql:mysql
       - redis:redis
       - config_server:configserver
       - corenode:corenode
-  mem_limit: 1000000000
   entrypoint: dockerize -wait tcp://mysql:3306 -timeout 3600s
   entrypoint: dockerize -wait tcp://redis:6379 -timeout 3600s
   entrypoint: dockerize -wait tcp://configserver:8888 -timeout 3600s
@@ -110,12 +110,12 @@ car:
     - /home/yingzhuo/projects/kuruma/logs/car/:/log/
   environment:
     - SPRING_PROFILES_ACTIVE=cloud
+    - JAVA_OPTS="-Xms5000m -Xmx10000m"
   links:
       - mysql:mysql
       - redis:redis
       - config_server:configserver
       - corenode:corenode
-  mem_limit: 1000000000
   entrypoint: dockerize -wait tcp://mysql:3306 -timeout 3600s
   entrypoint: dockerize -wait tcp://redis:6379 -timeout 3600s
   entrypoint: dockerize -wait tcp://configserver:8888 -timeout 3600s
@@ -130,12 +130,12 @@ bill:
     - /home/yingzhuo/projects/kuruma/logs/bill/:/log/
   environment:
     - SPRING_PROFILES_ACTIVE=cloud
+    - JAVA_OPTS="-Xms5000m -Xmx10000m"
   links:
       - mysql:mysql
       - redis:redis
       - config_server:configserver
       - corenode:corenode
-  mem_limit: 1000000000
   entrypoint: dockerize -wait tcp://mysql:3306 -timeout 3600s
   entrypoint: dockerize -wait tcp://redis:6379 -timeout 3600s
   entrypoint: dockerize -wait tcp://configserver:8888 -timeout 3600s
@@ -156,5 +156,5 @@ ui:
       - bill:bill
   environment:
     - SPRING_PROFILES_ACTIVE=cloud
-  mem_limit: 1000000000
+    - JAVA_OPTS="-Xms5000m -Xmx10000m"
   command: bash -c "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
