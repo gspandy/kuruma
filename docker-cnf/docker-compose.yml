@@ -45,6 +45,7 @@ corenode:
   volumes:
     - /tmp:/tmp
     - /home/yingzhuo/projects/kuruma/logs/corenode:/log/
+  mem_limit: 1000000000
   environment:
     - SPRING_PROFILES_ACTIVE=cloud
     - JAVA_OPTS="-Xms5000m -Xmx10000m"
@@ -57,6 +58,7 @@ config_server:
   volumes:
     - /tmp:/tmp
     - /home/yingzhuo/projects/kuruma/logs/config-server/:/log/
+  mem_limit: 1000000000
   environment:
     - SPRING_PROFILES_ACTIVE=cloud
     - JAVA_OPTS="-Xms5000m -Xmx10000m"
@@ -71,6 +73,7 @@ apigateway:
   volumes:
     - /tmp:/tmp
     - /home/yingzhuo/projects/kuruma/logs/apigateway:/log/
+  mem_limit: 1000000000
   environment:
     - SPRING_PROFILES_ACTIVE=cloud
     - JAVA_OPTS="-Xms5000m -Xmx10000m"
@@ -88,6 +91,7 @@ user:
   volumes:
     - /tmp:/tmp
     - /home/yingzhuo/projects/kuruma/logs/user/:/log/
+  mem_limit: 1000000000
   environment:
     - SPRING_PROFILES_ACTIVE=cloud
     - JAVA_OPTS="-Xms5000m -Xmx10000m"
@@ -108,6 +112,7 @@ car:
   volumes:
     - /tmp:/tmp
     - /home/yingzhuo/projects/kuruma/logs/car/:/log/
+  mem_limit: 1000000000
   environment:
     - SPRING_PROFILES_ACTIVE=cloud
     - JAVA_OPTS="-Xms5000m -Xmx10000m"
@@ -128,6 +133,7 @@ bill:
   volumes:
     - /tmp:/tmp
     - /home/yingzhuo/projects/kuruma/logs/bill/:/log/
+  mem_limit: 1000000000
   environment:
     - SPRING_PROFILES_ACTIVE=cloud
     - JAVA_OPTS="-Xms5000m -Xmx10000m"
@@ -148,6 +154,7 @@ ui:
   volumes:
     - /tmp:/tmp
     - /home/yingzhuo/projects/kuruma/logs/ui/:/log/
+  mem_limit: 1000000000
   links:
       - config_server:configserver
       - corenode:corenode
@@ -158,3 +165,4 @@ ui:
     - SPRING_PROFILES_ACTIVE=cloud
     - JAVA_OPTS="-Xms5000m -Xmx10000m"
   command: bash -c "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
+
